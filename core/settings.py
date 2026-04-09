@@ -94,7 +94,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Configuración de seguridad para formularios en la nube
 CSRF_TRUSTED_ORIGINS = [
-    'https://help-desk-telecable.azurewebsites.net',
+    'https://app-helpdesk-telecable-geeggsgfbuh5fwg7.centralus-01.azurewebsites.net',
+    'https://*.azurewebsites.net',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
