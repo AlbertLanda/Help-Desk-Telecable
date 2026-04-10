@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-# Importamos TODAS las vistas (Incluyendo la nueva de Proyectos)
+# Importamos TODAS las vistas (Incluyendo la nueva de Proyectos y Wiki)
 from tickets.views import (
     lista_tickets, 
     crear_ticket, 
@@ -19,7 +19,8 @@ from tickets.views import (
     base_conocimientos,
     exportar_pdf,
     tablero_kanban,
-    gestion_proyectos # <--- ¡NO OLVIDES ESTA IMPORTACIÓN!
+    gestion_proyectos,
+    detalle_wiki  # <--- Aquí está importada correctamente
 )
 
 urlpatterns = [
@@ -43,6 +44,7 @@ urlpatterns = [
     
     # Base de Conocimientos (Wiki)
     path('conocimientos/', base_conocimientos, name='base_conocimientos'),
+    path('wiki/articulo/<int:articulo_id>/', detalle_wiki, name='detalle_wiki'), # <--- Corregido (sin el views.)
     
     # Usuarios (Gestión Admin)
     path('usuarios/', gestion_usuarios, name='gestion_usuarios'),
@@ -53,7 +55,7 @@ urlpatterns = [
     # Herramientas Staff
     path('tablero/', tablero_kanban, name='tablero_kanban'),
     
-    # --- NUEVA RUTA: GESTIÓN DE PROYECTOS ---
+    # Gestión de Proyectos
     path('proyectos/', gestion_proyectos, name='gestion_proyectos'),
 ]
 

@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.template.loader import get_template 
 from xhtml2pdf import pisa 
 from .forms import RegistroUsuarioForm, EditarUsuarioForm 
+from .models import ArticuloWiki
 from django.utils import timezone
 import datetime
 
@@ -434,3 +435,8 @@ def gestion_proyectos(request):
 
     proyectos = Proyecto.objects.all()
     return render(request, 'tickets/gestion_proyectos.html', {'proyectos': proyectos})
+
+def detalle_wiki(request, articulo_id):
+    # Busca el artículo por su ID, si no existe lanza error 404
+    articulo = get_object_or_404(ArticuloWiki, id=articulo_id)
+    return render(request, 'tickets/detalle_wiki.html', {'articulo': articulo})
