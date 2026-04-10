@@ -57,14 +57,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Base de Datos
-# Configuración dinámica para Azure/Railway o SQLite local
+# ==========================================
+# 🛡️ BASE DE DATOS (BLINDADA PARA AZURE)
+# ==========================================
+# Configuración para que SQLite sobreviva a los despliegues en la nube
+if 'WEBSITE_HOSTNAME' in os.environ:
+    # Si estamos en Azure, guardamos la DB en la zona persistente que no se borra
+    DB_PATH = '/home/site/db.sqlite3'
+else:
+    # Si estás programando en tu PC, se guarda normal en tu carpeta del proyecto
+    DB_PATH = BASE_DIR / 'db.sqlite3'
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=f"sqlite:///{DB_PATH}",
         conn_max_age=600
     )
 }
+# ==========================================
 
 # Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
