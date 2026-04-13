@@ -116,7 +116,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="nuevo_comentario" value="1">
                             <div class="flex-1">
-                                <input type="text" name="texto" required placeholder="Escribe una respuesta..." 
+                               <input type="text" name="texto" placeholder="Escribe una respuesta..." autocomplete="off" class="w-full ...">
                                     class="w-full border border-slate-200 rounded-xl px-4 py-2.5 sm:py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition">
                             </div>
                             <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold shadow-lg shadow-blue-500/30 transition transform active:scale-95 flex items-center justify-center shrink-0">
