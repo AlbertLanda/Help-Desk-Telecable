@@ -58,7 +58,7 @@ urlpatterns = [
     # Gestión de Proyectos
     path('proyectos/', gestion_proyectos, name='gestion_proyectos'),
 ]
-
+# Prueba de persistencia
 # Configuración para ver imágenes en desarrollo
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
